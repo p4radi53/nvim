@@ -1,5 +1,6 @@
 return {
   "scalameta/nvim-metals",
+  enabled = Config.languages.scala,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },

@@ -1,6 +1,7 @@
 return {
   {
     "mfussenegger/nvim-dap",
+    enabled = Config.dap,
     keys = {
       { "<leader>db", ":DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
       { "<leader>dc", ":DapContinue<CR>",         desc = "Continue" },
@@ -23,6 +24,7 @@ return {
   },
   {
     "leoluz/nvim-dap-go",
+    enabled = Config.dap,
     ft = "go",
     dependencies = "mfussenegger/nvim-dap",
     config = function()

@@ -1,5 +1,6 @@
 return {
   "linux-cultist/venv-selector.nvim",
+  enabled = Config.languages.python,
   dependencies = { "neovim/nvim-lspconfig" },
   opts = {},
   event = "VeryLazy",
