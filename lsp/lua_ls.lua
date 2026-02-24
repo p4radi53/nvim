@@ -17,7 +17,7 @@ return {
       },
       workspace = {
         library = { vim.api.nvim_get_runtime_file("", true), "${3rd}/luassert/library" },
-        userThirdParty = { os.getenv("HOME") .. ".local/share/lua-addons" },
+        userThirdParty = { os.getenv("HOME") .. "/.local/share/lua-addons" },
         checkThirdParty = "Apply",
       },
     },

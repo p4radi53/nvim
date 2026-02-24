@@ -18,9 +18,6 @@ return {
         },
       },
     },
-    config = function()
-      local dap = require("dap")
-    end,
   },
   {
     "leoluz/nvim-dap-go",
