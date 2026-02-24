@@ -19,8 +19,15 @@ _G.Config = {
   },
 }
 
+local defaults = vim.deepcopy(Config)
 -- Load local overrides before plugins
 pcall(require, "config.local")
+
+-- Validate Config against defaults, warn on unknown keys
+local warnings = require("config.validate").validate(Config, defaults)
+for _, w in ipairs(warnings) do
+  vim.notify(w, vim.log.levels.WARN)
+end
 
 require("config.lazy")
 require("config.keymap")
