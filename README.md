@@ -19,6 +19,8 @@ Personal Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy
 - **Fuzzy finder** -- snacks.nvim picker for files, grep, buffers, git branches, and file explorer
 - **Formatting** -- conform.nvim with format-on-save (stylua for Lua, terraform_fmt for Terraform, LSP fallback)
 - **Syntax highlighting** -- treesitter with parsers for all configured languages
+- **Diagnostics** -- trouble.nvim for a pretty diagnostics list, symbols outline, quickfix/location list, and LSP references panel
+- **Todo comments** -- todo-comments.nvim highlights TODO/FIXME/HACK/NOTE in code with search and Trouble integration
 - **Debugging** -- nvim-dap with UI, Go and Python adapters out of the box
 - **AI** -- GitHub Copilot inline suggestions and Avante chat interface
 - **Git** -- gitsigns for change indicators in the sign column

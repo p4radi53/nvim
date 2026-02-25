@@ -19,6 +19,7 @@ Leader key is `<Space>`. This file documents all custom and plugin keybindings. 
 | `<leader>ff` | n | Smart find files |
 | `<leader>fs` | n | Grep |
 | `<leader>fb` | n | Buffers |
+| `<leader>ft` | n | Todo comments (picker) |
 | `<leader>e` | n | File explorer |
 
 ## LSP
@@ -47,6 +48,27 @@ These are Neovim 0.11+ built-in mappings, listed here for reference.
 |-----|------|--------|
 | `]d` | n | Next diagnostic |
 | `[d` | n | Previous diagnostic |
+
+## Trouble / Diagnostics
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>xx` | n | Toggle all diagnostics (Trouble) |
+| `<leader>xX` | n | Toggle buffer diagnostics (Trouble) |
+| `<leader>xs` | n | Toggle symbols outline (Trouble) |
+| `<leader>xr` | n | Toggle LSP references (Trouble, side panel) |
+| `<leader>xl` | n | Toggle location list (Trouble) |
+| `<leader>xq` | n | Toggle quickfix list (Trouble) |
+| `<leader>xt` | n | Toggle todo comments (Trouble) |
+
+## Todo Comments
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `]t` | n | Next todo comment |
+| `[t` | n | Previous todo comment |
+| `<leader>xt` | n | Todo comments list (Trouble) |
+| `<leader>ft` | n | Search todo comments (picker) |
 
 ## Completion (blink.cmp)
 
