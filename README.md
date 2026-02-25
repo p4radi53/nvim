@@ -2,6 +2,11 @@
 
 Personal Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy.nvim) with native LSP (Neovim 0.11+).
 
+<p>
+  <img src="assets/screenshot1.png" width="49%" />
+  <img src="assets/screenshot2.png" width="49%" />
+</p>
+
 ## Requirements
 
 - Neovim 0.11+
