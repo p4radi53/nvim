@@ -9,12 +9,4 @@ return {
     "Pipfile",
     "pyrightconfig.json",
   },
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-      },
-    },
-  },
 }
