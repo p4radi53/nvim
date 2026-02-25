@@ -35,12 +35,5 @@ return {
 			end,
 			desc = "File Explorer",
 		},
-		{
-			"<leader>gb",
-			function()
-				Snacks.picker.git_branches()
-			end,
-			desc = "Git Branches",
-		},
 	},
 }
