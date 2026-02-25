@@ -1,4 +1,4 @@
-r({
+return {
 	"folke/snacks.nvim",
 	opts = {
 		picker = {
@@ -43,4 +43,4 @@ r({
 			desc = "Git Branches",
 		},
 	},
-})
+}
