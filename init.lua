@@ -15,7 +15,7 @@ _G.Config = {
 		rust = true,
 		c = true,
 		typescript = true,
-		scala = false,
+		scala = true,
 		markdown = true,
 	},
 }
