@@ -27,6 +27,7 @@ Personal Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy
 - **Dashboard** -- snacks.nvim startup screen with recent files
 - **Statusline** -- lualine with material theme
 - **Autopairs** -- mini.pairs for automatic bracket/quote closing
+- **Terminal** -- snacks.nvim toggleable floating terminal
 - **Tmux integration** -- seamless split navigation between Neovim and tmux panes
 - **Feature flags** -- toggle languages, AI, debugging, and themes via a local config file
 

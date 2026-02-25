@@ -126,6 +126,12 @@ Requires `Config.avante = true` (default). These are Avante's built-in defaults.
 | `<leader>ar` | n | Refresh Avante |
 | `<leader>at` | n | Toggle Avante sidebar |
 
+## Terminal (snacks.nvim)
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>tt` | n | Toggle floating terminal (persistent session) |
+
 ## Tmux Navigation
 
 Requires tmux to be running. Works across Neovim splits and tmux panes seamlessly.

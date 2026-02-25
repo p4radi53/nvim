@@ -7,6 +7,7 @@ return {
 		indent = { enabled = true },
 		bigfile = { enabled = true },
 		input = { enabled = true },
+		terminal = { enabled = true },
 		dashboard = {
 			enabled = true,
 			preset = {
@@ -44,6 +45,16 @@ return {
 				{ title = "Keymaps", padding = 1 },
 				{ section = "keys", gap = 1, padding = 1 },
 			},
+		},
+	},
+	keys = {
+		{
+			"<leader>tt",
+			function()
+				Snacks.terminal.toggle(nil, { win = { position = "float" } })
+			end,
+			mode = { "n", "t" },
+			desc = "Toggle Floating Terminal",
 		},
 	},
 }
