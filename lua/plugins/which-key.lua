@@ -14,6 +14,7 @@ return {
 				{ "<leader>a", group = "AI" },
 				{ "<leader>x", group = "Trouble / Diagnostics" },
 				{ "<leader>t", group = "Terminal" },
+				{ "<leader>v", group = "Venv" },
 			})
 		end,
 	},
