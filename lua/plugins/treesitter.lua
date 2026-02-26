@@ -2,12 +2,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = { "BufReadPost", "BufNewFile" },
+		branch = "master",
 		config = function()
-			local configs = require("nvim-treesitter.configs")
-
-			---@diagnostic disable-next-line: missing-fields
-			configs.setup({
+			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
 					"c",
 					"lua",
@@ -27,6 +24,7 @@ return {
 					"markdown",
 					"go",
 					"just",
+					"vimdoc",
 				},
 				highlight = { enable = true },
 				indent = { enable = true },
