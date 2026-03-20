@@ -31,5 +31,5 @@ require("lazy").setup({
 		{ import = "plugins.themes" },
 		{ import = "plugins.languages" },
 	},
-	-- checker = { enabled = false },
+	checker = { enabled = false },
 })
