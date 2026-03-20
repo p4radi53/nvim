@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+    branch = "master",
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			local configs = require("nvim-treesitter.configs")
@@ -27,6 +28,8 @@ return {
 					"markdown",
 					"go",
 					"just",
+          "sql",
+          "hocon",
 				},
 				highlight = { enable = true },
 				indent = { enable = true },
