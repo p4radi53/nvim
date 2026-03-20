@@ -1,4 +1,4 @@
--- Feature flags with defaults.
+-- Fwflags with defaults.
 -- Override these in lua/config/local.lua (see local.lua.example).
 ---@class Config
 _G.Config = {
@@ -56,3 +56,17 @@ end
 
 -- Make clipboard work on WSL (requires xclip installed)
 vim.opt.clipboard = "unnamedplus"
+
+-- HOCON syntax highlighting + commenting
+local hocon_group = vim.api.nvim_create_augroup("hocon", { clear = true })
+vim.api.nvim_create_autocmd(
+	{ "BufNewFile", "BufRead" },
+	{ group = hocon_group, pattern = "*/resources/*.conf", command = "set ft=hocon" }
+)
+vim.api.nvim_create_autocmd("FileType", {
+	group = hocon_group,
+	pattern = "hocon",
+	callback = function()
+		vim.bo.commentstring = "// %s"
+	end,
+})

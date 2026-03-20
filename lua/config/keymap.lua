@@ -1,5 +1,10 @@
 local keymap = vim.keymap
 
+-- Format
+keymap.set({ "n", "x" }, "<leader>cf", function()
+	require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "Format" })
+
 -- Basic keymaps
 keymap.set("n", "<leader>q", ":q<CR>", { desc = "quit" })
 keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "write and quit" })
@@ -27,9 +32,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "<leader>cq", "<cmd>lua vim.diagnostic.setqflist()<cr><cmd>:copen<cr>", opts)
 		keymap.set("n", "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
 		keymap.set("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-		keymap.set({ "n", "x" }, "<leader>cf", function()
-			require("conform").format({ async = true, lsp_format = "fallback" })
-		end, { buffer = event.buf, desc = "Format" })
 		keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 	end,
 })
