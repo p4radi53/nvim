@@ -1,7 +1,3 @@
--- Mason (run :MasonUpdate after install)
-vim.pack.add({ { src = "https://github.com/williamboman/mason.nvim" } })
-require("mason").setup()
-
 -- Lazydev (loaded before blink.cmp for source integration)
 if Config.languages.lua then
 	vim.pack.add({ { src = "https://github.com/folke/lazydev.nvim" } })
