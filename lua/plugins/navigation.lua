@@ -22,7 +22,9 @@ require("telescope").setup({
 			local original_maker = previewers.buffer_previewer_maker
 			original_maker(filepath, bufnr, opts)
 			if filepath:match("%.conf$") then
-				vim.schedule(function() vim.bo[bufnr].filetype = "hocon" end)
+				vim.schedule(function()
+					vim.bo[bufnr].filetype = "hocon"
+				end)
 			end
 		end,
 		layout_strategy = "horizontal",
@@ -36,8 +38,11 @@ require("telescope").setup({
 		},
 	},
 })
+require("telescope").load_extension("fzf")
+
 vim.keymap.set("n", "<leader>ff", function()
-	local ok = pcall(require("telescope.builtin").git_files, { show_untracked = true, prompt_title = "Smart Find Files" })
+	local ok =
+		pcall(require("telescope.builtin").git_files, { show_untracked = true, prompt_title = "Smart Find Files" })
 	if not ok then
 		require("telescope.builtin").find_files({ hidden = true, prompt_title = "Smart Find Files" })
 	end
