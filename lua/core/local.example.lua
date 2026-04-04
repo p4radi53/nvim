@@ -1,6 +1,6 @@
 -- Local configuration overrides.
--- Copy this file to lua/config/local.lua and uncomment the lines you want to change.
--- lua/config/local.lua is gitignored and will not be committed.
+-- Copy this file to lua/core/local.lua and uncomment the lines you want to change.
+-- lua/core/local.lua is gitignored and will not be committed.
 
 -- Theme: "tokyonight-night", "catppuccin", "rose-pine"
 -- Config.theme = "catppuccin"

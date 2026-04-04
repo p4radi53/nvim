@@ -12,15 +12,16 @@ Leader key is `<Space>`. This file documents all custom and plugin keybindings. 
 | `U` | n | Redo |
 | `jj` | i | Exit insert mode |
 
-## Finder (snacks.nvim)
+## Finder (Telescope)
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `<leader>ff` | n | Smart find files |
+| `<leader>ff` | n | Smart find files (git files, falls back to find files) |
 | `<leader>fs` | n | Grep |
 | `<leader>fb` | n | Buffers |
-| `<leader>ft` | n | Todo comments (picker) |
-| `<leader>e` | n | File explorer |
+| `<leader>fg` | n | Git status |
+| `<leader>ft` | n | Todo comments (snacks picker) |
+| `<leader>e` | n, t | File explorer (Neo-tree) |
 
 ## LSP
 

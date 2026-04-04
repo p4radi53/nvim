@@ -1,6 +1,6 @@
 # nvim
 
-Personal Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy.nvim) with native LSP (Neovim 0.11+).
+Personal Neovim configuration built on `vim.pack` (Neovim's built-in package manager) with native LSP.
 
 <p>
   <img src="assets/screenshot1.png" width="49%" />
@@ -9,11 +9,11 @@ Personal Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy
 
 ## Requirements
 
-- Neovim 0.11+
+- Neovim 0.12+
 - Git
 - A [Nerd Font](https://www.nerdfonts.com/) (for icons in statusline, file explorer, etc.)
-- [ripgrep](https://github.com/BurntSushi/ripgrep) (for live grep via snacks picker)
-- [fd](https://github.com/sharkdp/fd) (for file finding via snacks picker)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (for live grep via Telescope)
+- [fd](https://github.com/sharkdp/fd) (for file finding via Telescope)
 - A C compiler (for treesitter parser compilation)
 - [tmux](https://github.com/tmux/tmux) (optional, for split navigation with `C-h/j/k/l`)
 
@@ -21,7 +21,7 @@ Personal Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy
 
 - **Native LSP** -- uses Neovim 0.11+ `vim.lsp.enable()` with `lsp/` directory convention, no lspconfig needed
 - **Autocompletion** -- blink.cmp with LSP, snippets, buffer, and path sources
-- **Fuzzy finder** -- snacks.nvim picker for files, grep, buffers, git branches, and file explorer
+- **Fuzzy finder** -- Telescope with fzf-native for files, grep, buffers, and git status
 - **Formatting** -- conform.nvim with format-on-save (stylua for Lua, terraform_fmt for Terraform, LSP fallback)
 - **Syntax highlighting** -- treesitter with parsers for all configured languages
 - **Diagnostics** -- trouble.nvim for a pretty diagnostics list, symbols outline, quickfix/location list, and LSP references panel
@@ -69,10 +69,10 @@ Leader key is `<Space>`. See [KEYMAPS.md](KEYMAPS.md) for the full reference.
 The shared configuration works out of the box with sensible defaults. To customize settings for your machine without affecting the shared repo, create a local config file:
 
 ```sh
-cp lua/config/example.local.lua lua/config/local.lua
+cp lua/core/local.example.lua lua/core/local.lua
 ```
 
-`lua/config/local.lua` is gitignored and will never be committed. It is loaded before plugins, so any overrides you set there take effect before anything else runs.
+`lua/core/local.lua` is gitignored and will never be committed. It is loaded before plugins, so any overrides you set there take effect before anything else runs.
 
 ### Feature Flags
 

@@ -1,5 +1,6 @@
--- Fwflags with defaults.
--- Override these in lua/config/local.lua (see local.lua.example).
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 ---@class Config
 _G.Config = {
 	theme = "tokyonight-night",
@@ -21,57 +22,18 @@ _G.Config = {
 }
 
 local defaults = vim.deepcopy(Config)
--- Load local overrides before plugins
-pcall(require, "config.local")
+pcall(require, "core.local")
 
--- Validate Config against defaults, warn on unknown keys
-local warnings = require("config.validate").validate(Config, defaults)
+local warnings = require("core.validate").validate(Config, defaults)
 for _, w in ipairs(warnings) do
 	vim.notify(w, vim.log.levels.WARN)
 end
 
-require("config.lazy")
-require("config.keymap")
-require("config.options")
+require("core.options")
+require("core.keymaps")
+require("core.autocmds")
+require("plugins")
 
 vim.cmd.colorscheme(Config.theme)
 
--- Conditionally enable LSP servers based on language flags
-local lsp_map = {
-	python = { "pyright", "ruff" },
-	lua = { "lua_ls" },
-	java = { "jdtls" },
-	go = { "gopls" },
-	terraform = { "terraformls" },
-	rust = { "rust-analyzer" },
-	c = { "clangd" },
-	typescript = { "tsls" },
-}
-
-for lang, servers in pairs(lsp_map) do
-	if Config.languages[lang] then
-		vim.lsp.enable(servers)
-	end
-end
-
--- Make clipboard work on WSL (requires xclip installed)
-vim.opt.clipboard = "unnamedplus"
-
--- HOCON syntax highlighting + commenting
-vim.filetype.add({
-	pattern = {
-		[".*/resources/.*%.conf$"] = "hocon",
-	},
-})
-local hocon_group = vim.api.nvim_create_augroup("hocon", { clear = true })
-vim.api.nvim_create_autocmd(
-	{ "BufNewFile", "BufRead", "BufEnter" },
-	{ group = hocon_group, pattern = "*/resources/**/*.conf", command = "set ft=hocon" }
-)
-vim.api.nvim_create_autocmd("FileType", {
-	group = hocon_group,
-	pattern = "hocon",
-	callback = function()
-		vim.bo.commentstring = "// %s"
-	end,
-})
+require("core.lsp")
