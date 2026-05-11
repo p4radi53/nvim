@@ -20,6 +20,7 @@ Leader key is `<Space>`. This file documents all custom and plugin keybindings. 
 | `<leader>fs` | n | Grep |
 | `<leader>fb` | n | Buffers |
 | `<leader>fg` | n | Git status |
+| `<leader>fd` | n | Files changed on current branch vs develop |
 | `<leader>ft` | n | Todo comments (snacks picker) |
 | `<leader>e` | n, t | File explorer (Neo-tree) |
 

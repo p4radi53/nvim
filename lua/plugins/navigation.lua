@@ -17,16 +17,6 @@ vim.pack.add({
 })
 require("telescope").setup({
 	defaults = {
-		buffer_previewer_maker = function(filepath, bufnr, opts)
-			local previewers = require("telescope.previewers")
-			local original_maker = previewers.buffer_previewer_maker
-			original_maker(filepath, bufnr, opts)
-			if filepath:match("%.conf$") then
-				vim.schedule(function()
-					vim.bo[bufnr].filetype = "hocon"
-				end)
-			end
-		end,
 		layout_strategy = "horizontal",
 		sorting_strategy = "ascending",
 		layout_config = { prompt_position = "top" },
@@ -56,6 +46,20 @@ end, { desc = "Grep" })
 vim.keymap.set("n", "<leader>fg", function()
 	require("telescope.builtin").git_status()
 end, { desc = "Git Status" })
+-- Files changed on current branch vs develop (three-dot = from merge-base, excludes develop's own changes)
+vim.keymap.set("n", "<leader>fd", function()
+	require("telescope.pickers")
+		.new({}, {
+			prompt_title = "My changes vs develop",
+			finder = require("telescope.finders").new_oneshot_job(
+				{ "git", "diff", "develop...HEAD", "--name-only" },
+				{ entry_maker = require("telescope.make_entry").gen_from_file() }
+			),
+			sorter = require("telescope.config").values.file_sorter(),
+			previewer = require("telescope.config").values.file_previewer({}),
+		})
+		:find()
+end, { desc = "Files changed vs develop" })
 
 -- Harpoon (harpoon2 branch)
 vim.pack.add({ { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" } })
