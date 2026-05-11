@@ -31,9 +31,9 @@ end
 
 require("core.options")
 require("core.keymaps")
-require("core.autocmds")
 require("plugins")
 
 vim.cmd.colorscheme(Config.theme)
 
 require("core.lsp")
+require("core.autocmds")

@@ -4,32 +4,39 @@ require("gitsigns").setup()
 
 -- Treesitter (run :TSUpdate after install)
 vim.pack.add({ { src = "https://github.com/nvim-treesitter/nvim-treesitter" } })
-require("nvim-treesitter").setup({
-	ensure_installed = {
-		"c",
-		"lua",
-		"vim",
-		"python",
-		"rust",
-		"java",
-		"javascript",
-		"typescript",
-		"html",
-		"css",
-		"terraform",
-		"hcl",
-		"yaml",
-		"toml",
-		"json",
-		"markdown",
-		"go",
-		"just",
-		"sql",
-		"hocon",
-	},
-	highlight = { enable = true },
-	indent = { enable = true },
+require("nvim-treesitter").setup()
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
 })
+local parsers = {
+	"c",
+	"lua",
+	"vim",
+	"python",
+	"rust",
+	"java",
+	"javascript",
+	"typescript",
+	"html",
+	"css",
+	"terraform",
+	"hcl",
+	"yaml",
+	"toml",
+	"json",
+	"markdown",
+	"go",
+	"just",
+	"sql",
+	"hocon",
+}
+
+for _, parser in ipairs(parsers) do
+	require("nvim-treesitter").install(parser):wait(30000)
+end
+vim.treesitter.language.register("hocon", "hocon")
 
 -- mini.pairs
 vim.pack.add({ { src = "https://github.com/echasnovski/mini.pairs" } })

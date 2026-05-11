@@ -3,7 +3,7 @@ local hocon = vim.api.nvim_create_augroup("hocon", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	group = hocon,
-	pattern = "*/resources/*.conf",
+	pattern = "*.conf",
 	command = "set ft=hocon",
 })
 
@@ -12,5 +12,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "hocon",
 	callback = function()
 		vim.bo.commentstring = "// %s"
+		vim.treesitter.start()
 	end,
 })
