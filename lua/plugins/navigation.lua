@@ -20,6 +20,16 @@ require("telescope").setup({
 		layout_strategy = "horizontal",
 		sorting_strategy = "ascending",
 		layout_config = { prompt_position = "top" },
+		path_display = function(_, path)
+			local tail = vim.fn.fnamemodify(path, ":t")
+			local dir = vim.fn.fnamemodify(path, ":h")
+			local display = tail .. "  " .. dir
+			return display,
+				{
+					{ { 0, #tail }, "TelescopeResultsNormal" },
+					{ { #tail + 2, #tail + 2 + #dir }, "TelescopeResultsComment" },
+				}
+		end,
 		mappings = {
 			i = {
 				["<C-j>"] = "move_selection_next",
@@ -60,25 +70,44 @@ vim.keymap.set("n", "<leader>fd", function()
 		})
 		:find()
 end, { desc = "Files changed vs develop" })
-
--- Harpoon (harpoon2 branch)
-vim.pack.add({ { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" } })
--- local harpoon = require("harpoon")
--- harpoon:setup()
--- vim.keymap.set("n", "<leader>ha", function()
--- 	harpoon:list():add()
--- end, { desc = "Add to harpoon" })
--- vim.keymap.set("n", "<leader>hr", function()
--- 	harpoon:list():remove()
--- end, { desc = "Remove from harpoon" })
--- vim.keymap.set("n", "<leader>hh", function()
--- 	harpoon.ui:toggle_quick_menu(harpoon:list())
--- end, { desc = "Harpoon menu" })
--- for i = 1, 5 do
--- 	vim.keymap.set("n", "<leader>" .. i, function()
--- 		harpoon:list():select(i)
--- 	end, { desc = "Harpoon file " .. i })
--- end
+vim.keymap.set("n", "<leader>fw", function()
+	local displayer = require("telescope.pickers.entry_display").create({
+		separator = "  ",
+		items = { { width = 30 }, { remaining = true } },
+	})
+	require("telescope.pickers")
+		.new({}, {
+			prompt_title = "Worktrees",
+			finder = require("telescope.finders").new_oneshot_job({ "git", "worktree", "list" }, {
+				entry_maker = function(line)
+					local path, branch = line:match("^(%S+)%s+%x+%s+%[(.-)%]")
+					if path then
+						local name = vim.fn.fnamemodify(path, ":t")
+						return {
+							value = path,
+							ordinal = branch .. " " .. name,
+							display = function()
+								return displayer({
+									{ branch, "TelescopeResultsIdentifier" },
+									{ name, "Directory" },
+								})
+							end,
+						}
+					end
+				end,
+			}),
+			sorter = require("telescope.config").values.generic_sorter({}),
+			attach_mappings = function(_, map)
+				map("i", "<CR>", function(prompt_bufnr)
+					local sel = require("telescope.actions.state").get_selected_entry()
+					require("telescope.actions").close(prompt_bufnr)
+					vim.cmd.cd(sel.value)
+				end)
+				return true
+			end,
+		})
+		:find()
+end, { desc = "Worktrees" })
 
 -- Tmux Navigator
 vim.pack.add({ { src = "https://github.com/christoomey/vim-tmux-navigator" } })
