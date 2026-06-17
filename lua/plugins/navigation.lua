@@ -70,6 +70,10 @@ vim.keymap.set("n", "<leader>fd", function()
 		})
 		:find()
 end, { desc = "Files changed vs develop" })
+vim.keymap.set("n", "<leader>fl", function()
+	require("telescope.builtin").lsp_dynamic_workspace_symbols({ prompt_title = "Workspace Symbols" })
+end, { desc = "Workspace Symbols" })
+
 vim.keymap.set("n", "<leader>fw", function()
 	local displayer = require("telescope.pickers.entry_display").create({
 		separator = "  ",
