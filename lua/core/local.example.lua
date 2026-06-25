@@ -2,15 +2,8 @@
 -- Copy this file to lua/core/local.lua and uncomment the lines you want to change.
 -- lua/core/local.lua is gitignored and will not be committed.
 
--- Theme: "tokyonight-night", "catppuccin", "rose-pine"
--- Config.theme = "catppuccin"
-
--- AI features
--- Config.copilot = false
--- Config.avante = false
-
--- Debugging
--- Config.dap = false
+-- Theme
+-- Config.theme = "tokyonight-night"
 
 -- Languages (disabling a language turns off its LSP server and related plugins)
 -- Config.languages.python = false

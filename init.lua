@@ -4,9 +4,6 @@ vim.g.maplocalleader = "\\"
 ---@class Config
 _G.Config = {
 	theme = "tokyonight-night",
-	copilot = true,
-	avante = true,
-	dap = true,
 	languages = {
 		python = true,
 		lua = true,
