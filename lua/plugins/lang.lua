@@ -1,3 +1,14 @@
+-- Lazydev (loaded before blink.cmp for source integration)
+if Config.languages.lua then
+	vim.pack.add({ { src = "https://github.com/folke/lazydev.nvim" } })
+	require("lazydev").setup({
+		library = {
+			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			{ path = "snacks.nvim", words = { "Snacks" } },
+		},
+	})
+end
+
 -- Java
 if Config.languages.java then
 	vim.pack.add({ { src = "https://github.com/nvim-java/nvim-java" } })

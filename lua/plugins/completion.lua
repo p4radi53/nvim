@@ -1,14 +1,3 @@
--- Lazydev (loaded before blink.cmp for source integration)
-if Config.languages.lua then
-	vim.pack.add({ { src = "https://github.com/folke/lazydev.nvim" } })
-	require("lazydev").setup({
-		library = {
-			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-			{ path = "snacks.nvim", words = { "Snacks" } },
-		},
-	})
-end
-
 -- Blink CMP
 vim.pack.add({
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1" },
