@@ -46,8 +46,6 @@ vim.o.timeoutlen = 500
 require("which-key").add({
 	{ "<leader>f", group = "Fuzzy Finder" },
 	{ "<leader>c", group = "Code actions" },
-	{ "<leader>d", group = "Debug" },
-	{ "<leader>a", group = "AI" },
 	{ "<leader>x", group = "Trouble / Diagnostics" },
 	{ "<leader>t", group = "Terminal" },
 	{ "<leader>v", group = "Venv" },
