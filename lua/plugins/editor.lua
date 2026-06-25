@@ -38,9 +38,16 @@ for _, parser in ipairs(parsers) do
 end
 vim.treesitter.language.register("hocon", "hocon")
 
--- mini.pairs
-vim.pack.add({ { src = "https://github.com/echasnovski/mini.pairs" } })
+-- mini.nvim modules
+vim.pack.add({
+  { src = 'https://github.com/nvim-mini/mini.nvim', version = 'stable' },
+})
 require("mini.pairs").setup()
+require("mini.surround").setup()
+require("mini.splitjoin").setup()
+require("mini.icons").setup()
+require("mini.icons").mock_nvim_web_devicons()
+require("mini.statusline").setup({ use_icons = true })
 
 -- Conform
 vim.pack.add({ { src = "https://github.com/stevearc/conform.nvim" } })

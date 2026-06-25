@@ -1,7 +1,3 @@
--- Lualine
-vim.pack.add({ { src = "https://github.com/nvim-lualine/lualine.nvim" } })
-require("lualine").setup({ options = { theme = "material" } })
-
 -- Snacks
 vim.pack.add({ { src = "https://github.com/folke/snacks.nvim" } })
 require("snacks").setup({
