@@ -52,6 +52,21 @@ These are Neovim 0.11+ built-in mappings, listed here for reference.
 | `]d` | n | Next diagnostic |
 | `[d` | n | Previous diagnostic |
 
+## Git (gitsigns)
+
+Buffer-local; only active in files tracked by git. `]c` / `[c` fall through to vim's diff-mode mappings when in `:diffsplit`.
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `]c` | n | Next hunk |
+| `[c` | n | Previous hunk |
+| `<leader>gp` | n | Preview hunk |
+| `<leader>gb` | n | Blame line (full) |
+| `<leader>gs` | n, v | Stage hunk |
+| `<leader>gr` | n, v | Reset hunk |
+| `<leader>gu` | n | Undo stage hunk |
+| `ih` | o, x | Inside hunk (text object) |
+
 ## Trouble / Diagnostics
 
 | Key | Mode | Action |

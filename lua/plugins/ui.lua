@@ -49,4 +49,5 @@ require("which-key").add({
 	{ "<leader>x", group = "Trouble / Diagnostics" },
 	{ "<leader>t", group = "Terminal" },
 	{ "<leader>v", group = "Venv" },
+	{ "<leader>g", group = "Git" },
 })
