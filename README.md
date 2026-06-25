@@ -21,44 +21,35 @@ Personal Neovim configuration built on `vim.pack` (Neovim's built-in package man
 
 - **Native LSP** -- uses Neovim 0.11+ `vim.lsp.enable()` with `lsp/` directory convention, no lspconfig needed
 - **Autocompletion** -- blink.cmp with LSP, snippets, buffer, and path sources
-- **Fuzzy finder** -- Telescope with fzf-native for files, grep, buffers, and git status
+- **Fuzzy finder** -- Telescope with fzf-native for files, grep, buffers, git status, worktrees, and workspace symbols
 - **Formatting** -- conform.nvim with format-on-save (stylua for Lua, terraform_fmt for Terraform, LSP fallback)
 - **Syntax highlighting** -- treesitter with parsers for all configured languages
 - **Diagnostics** -- trouble.nvim for a pretty diagnostics list, symbols outline, quickfix/location list, and LSP references panel
-- **Todo comments** -- todo-comments.nvim highlights TODO/FIXME/HACK/NOTE in code with search and Trouble integration
-- **Debugging** -- nvim-dap with UI, Go and Python adapters out of the box
-- **AI** -- GitHub Copilot inline suggestions and Avante chat interface
 - **Git** -- gitsigns for change indicators in the sign column
+- **File explorer** -- neo-tree
 - **Dashboard** -- snacks.nvim startup screen with recent files
-- **Statusline** -- lualine with material theme
-- **Autopairs** -- mini.pairs for automatic bracket/quote closing
+- **Statusline** -- mini.statusline
+- **Editing** -- mini.pairs (auto-pairs), mini.surround, mini.splitjoin, mini.icons
 - **Terminal** -- snacks.nvim toggleable floating terminal
 - **Tmux integration** -- seamless split navigation between Neovim and tmux panes
-- **Feature flags** -- toggle languages, AI, debugging, and themes via a local config file
+- **Feature flags** -- toggle individual languages on/off via a local config file
 
-## Mason Packages
+## LSP Servers
 
-Mason provides LSP servers, formatters, linters, and debug adapters. Install packages manually with `:MasonInstall`.
+LSP servers are configured in the `lsp/` directory (one file per server) and enabled via `vim.lsp.enable()`. You need to install the server binaries yourself (e.g. via your package manager, `npm`, `cargo`, etc.).
 
-The following packages correspond to each `Config.languages` flag:
-
-| Flag | Packages |
-|------|----------|
-| _always_ | `stylua` |
-| `python` | `pyright`, `ruff`, `debugpy` |
+| Language flag | Servers / extra tools |
+|---------------|------------------------|
+| _always_ | `stylua` (Lua formatter) |
+| `python` | `pyright`, `ruff` |
 | `lua` | `lua-language-server` |
 | `java` | `jdtls` |
-| `go` | `gopls`, `delve` |
-| `terraform` | `terraform-ls`, `tflint` |
+| `go` | `gopls` |
+| `terraform` | `terraform-ls` |
 | `rust` | `rust-analyzer` |
 | `c` | `clangd` |
 | `typescript` | `typescript-language-server` |
-
-Quick install example for a Python + Go setup:
-
-```vim
-:MasonInstall stylua pyright ruff debugpy gopls delve lua-language-server
-```
+| `scala` | `metals` (managed by nvim-metals) |
 
 ## Keybindings
 
@@ -79,22 +70,12 @@ cp lua/core/local.example.lua lua/core/local.lua
 The configuration exposes a global `Config` table with feature flags. Override any of them in your `local.lua`:
 
 ```lua
--- Disable AI features
-Config.copilot = false
-Config.avante = false
-
--- Disable debugging support
-Config.dap = false
-
 -- Turn off languages you don't need
 Config.languages.java = false
 Config.languages.terraform = false
 
--- Enable languages that are off by default
-Config.languages.scala = true
-
 -- Switch the colorscheme
-Config.theme = "catppuccin"
+Config.theme = "tokyonight-night"
 ```
 
 Disabling a language turns off its LSP server(s) and any related plugins.
@@ -103,19 +84,16 @@ Disabling a language turns off its LSP server(s) and any related plugins.
 
 | Flag | Default | Controls |
 |------|---------|----------|
-| `Config.theme` | `"tokyonight-night"` | Colorscheme (`"tokyonight-night"`, `"catppuccin"`, `"rose-pine"`) |
-| `Config.copilot` | `true` | GitHub Copilot |
-| `Config.avante` | `true` | Avante AI assistant |
-| `Config.dap` | `true` | Debug Adapter Protocol (nvim-dap + UI) |
-| `Config.languages.python` | `true` | pyright, ruff |
+| `Config.theme` | `"tokyonight-night"` | Colorscheme |
+| `Config.languages.python` | `true` | pyright, ruff, venv-selector |
 | `Config.languages.lua` | `true` | lua_ls, lazydev |
 | `Config.languages.java` | `true` | jdtls, nvim-java |
-| `Config.languages.go` | `true` | gopls, nvim-dap-go |
+| `Config.languages.go` | `true` | gopls |
 | `Config.languages.terraform` | `true` | terraformls |
 | `Config.languages.rust` | `true` | rust-analyzer |
 | `Config.languages.c` | `true` | clangd |
 | `Config.languages.typescript` | `true` | tsls |
-| `Config.languages.scala` | `false` | nvim-metals |
+| `Config.languages.scala` | `true` | nvim-metals |
 | `Config.languages.markdown` | `true` | render-markdown.nvim |
 
 ### Other Overrides

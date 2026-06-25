@@ -21,8 +21,8 @@ Leader key is `<Space>`. This file documents all custom and plugin keybindings. 
 | `<leader>fb` | n | Buffers |
 | `<leader>fg` | n | Git status |
 | `<leader>fd` | n | Files changed on current branch vs develop |
+| `<leader>fl` | n | Workspace symbols (LSP) |
 | `<leader>fw` | n | Switch worktree |
-| `<leader>ft` | n | Todo comments (snacks picker) |
 | `<leader>e` | n, t | File explorer (Neo-tree) |
 
 ## LSP
@@ -62,16 +62,6 @@ These are Neovim 0.11+ built-in mappings, listed here for reference.
 | `<leader>xr` | n | Toggle LSP references (Trouble, side panel) |
 | `<leader>xl` | n | Toggle location list (Trouble) |
 | `<leader>xq` | n | Toggle quickfix list (Trouble) |
-| `<leader>xt` | n | Toggle todo comments (Trouble) |
-
-## Todo Comments
-
-| Key | Mode | Action |
-|-----|------|--------|
-| `]t` | n | Next todo comment |
-| `[t` | n | Previous todo comment |
-| `<leader>xt` | n | Todo comments list (Trouble) |
-| `<leader>ft` | n | Search todo comments (picker) |
 
 ## Completion (blink.cmp)
 
@@ -96,44 +86,28 @@ These are Neovim 0.10+ built-in mappings.
 | `gcc` | n | Toggle comment (line) |
 | `gc` | x | Toggle comment (selection) |
 
-## Debugging (nvim-dap)
-
-Requires `Config.dap = true` (default).
+## Editing (mini.nvim)
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `<leader>db` | n | Toggle breakpoint |
-| `<leader>dc` | n | Continue |
-| `<leader>dt` | n | Terminate |
-| `<leader>do` | n | Step over |
-| `<leader>di` | n | Step into |
-| `<leader>du` | n | Step out |
-| `<leader>dv` | n | Toggle debug UI |
+| `sa{motion}{char}` | n | Surround add (mini.surround) |
+| `sd{char}` | n | Surround delete (mini.surround) |
+| `sr{char}{char}` | n | Surround replace (mini.surround) |
+| `gS` | n | Toggle split/join of arguments (mini.splitjoin) |
 
-## AI -- Copilot
+## Python
 
-Requires `Config.copilot = true` (default).
+Requires `Config.languages.python = true` (default).
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `C-a` | i | Accept Copilot suggestion |
-
-## AI -- Avante
-
-Requires `Config.avante = true` (default). These are Avante's built-in defaults.
-
-| Key | Mode | Action |
-|-----|------|--------|
-| `<leader>aa` | n, v | Ask Avante |
-| `<leader>ae` | n, v | Edit with Avante |
-| `<leader>ar` | n | Refresh Avante |
-| `<leader>at` | n | Toggle Avante sidebar |
+| `<leader>vs` | n | Select Python venv |
 
 ## Terminal (snacks.nvim)
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `<leader>tt` | n | Toggle floating terminal (persistent session) |
+| `<leader>tt` | n, t | Toggle floating terminal (persistent session) |
 
 ## Tmux Navigation
 
