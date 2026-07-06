@@ -113,9 +113,40 @@ vim.keymap.set("n", "<leader>fw", function()
 		:find()
 end, { desc = "Worktrees" })
 
--- Tmux Navigator
+-- Tmux Navigator (kept for its :TmuxNavigate* commands; its own maps are
+-- disabled so the herdr-aware maps below are the single source of truth).
+vim.g.tmux_navigator_no_mappings = 1
 vim.pack.add({ { src = "https://github.com/christoomey/vim-tmux-navigator" } })
-vim.keymap.set("n", "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>")
-vim.keymap.set("n", "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
-vim.keymap.set("n", "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>")
-vim.keymap.set("n", "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>")
+
+-- Seamless <C-h/j/k/l> across Neovim splits and herdr panes. Moves between
+-- Neovim splits first; at a split edge, hands off to herdr (inside a herdr
+-- pane) or falls back to tmux (if $TMUX is set) or plain wincmd.
+local function nav(wincmd, dir)
+	local prev = vim.api.nvim_get_current_win()
+	vim.cmd("wincmd " .. wincmd)
+	if vim.api.nvim_get_current_win() ~= prev then
+		return -- moved within Neovim
+	end
+	-- At a split edge: cross into the surrounding multiplexer.
+	if vim.env.HERDR_PANE_ID and vim.env.HERDR_PANE_ID ~= "" then
+		local herdr = vim.env.HERDR_BIN_PATH
+		if herdr == nil or herdr == "" then
+			herdr = "herdr"
+		end
+		vim.fn.system({ herdr, "pane", "focus", "--direction", dir, "--current" })
+	elseif vim.env.TMUX and vim.env.TMUX ~= "" then
+		local tmux = { left = "Left", down = "Down", up = "Up", right = "Right" }
+		pcall(vim.cmd, "TmuxNavigate" .. tmux[dir])
+	end
+end
+
+local function nav_map(lhs, wincmd, dir, desc)
+	vim.keymap.set("n", lhs, function()
+		nav(wincmd, dir)
+	end, { silent = true, noremap = true, desc = desc })
+end
+
+nav_map("<C-h>", "h", "left", "Navigate left (vim/herdr)")
+nav_map("<C-j>", "j", "down", "Navigate down (vim/herdr)")
+nav_map("<C-k>", "k", "up", "Navigate up (vim/herdr)")
+nav_map("<C-l>", "l", "right", "Navigate right (vim/herdr)")
