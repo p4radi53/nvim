@@ -47,15 +47,19 @@ vim.keymap.set("n", "<leader>ff", function()
 		require("telescope.builtin").find_files({ hidden = true, prompt_title = "Smart Find Files" })
 	end
 end, { desc = "Smart Find Files" })
+
 vim.keymap.set("n", "<leader>fb", function()
 	require("telescope.builtin").buffers({ show_all_buffers = true, sort_lastused = true, prompt_title = "Buffers" })
 end, { desc = "Buffers" })
+
 vim.keymap.set("n", "<leader>fs", function()
 	require("telescope.builtin").live_grep({ prompt_title = "Grep" })
 end, { desc = "Grep" })
+
 vim.keymap.set("n", "<leader>fg", function()
 	require("telescope.builtin").git_status()
 end, { desc = "Git Status" })
+
 -- Files changed on current branch vs develop (three-dot = from merge-base, excludes develop's own changes)
 vim.keymap.set("n", "<leader>fd", function()
 	require("telescope.pickers")
@@ -70,9 +74,14 @@ vim.keymap.set("n", "<leader>fd", function()
 		})
 		:find()
 end, { desc = "Files changed vs develop" })
+
 vim.keymap.set("n", "<leader>fl", function()
 	require("telescope.builtin").lsp_dynamic_workspace_symbols({ prompt_title = "Workspace Symbols" })
 end, { desc = "Workspace Symbols" })
+
+vim.keymap.set("n", "<leader>fm", function()
+	require("telescope.builtin").marks({ prompt_title = "Project Marks", mark_type = "global" })
+end, { desc = "Project marks" })
 
 vim.keymap.set("n", "<leader>fw", function()
 	local displayer = require("telescope.pickers.entry_display").create({
