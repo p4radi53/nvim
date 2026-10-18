@@ -5,7 +5,6 @@ require("snacks").setup({
 	indent = { enabled = true },
 	bigfile = { enabled = true },
 	input = { enabled = true },
-	terminal = { enabled = true },
 	dashboard = {
 		enabled = true,
 		preset = {
@@ -36,9 +35,6 @@ require("snacks").setup({
 		},
 	},
 })
-vim.keymap.set({ "n", "t" }, "<leader>tt", function()
-	Snacks.terminal.toggle(nil, { win = { position = "float" } })
-end, { desc = "Toggle Floating Terminal" })
 
 -- Which-key
 vim.pack.add({ { src = "https://github.com/folke/which-key.nvim" } })

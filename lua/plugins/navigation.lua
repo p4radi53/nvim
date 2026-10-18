@@ -17,9 +17,14 @@ vim.pack.add({
 })
 require("telescope").setup({
 	defaults = {
-		layout_strategy = "horizontal",
+		layout_strategy = "flex",
 		sorting_strategy = "ascending",
-		layout_config = { prompt_position = "top" },
+		layout_config = {
+			flex = { flip_columns = 180 }, -- below 120 columns, use vertical
+			vertical = { preview_height = 0.5, mirror = true },
+			horizontal = { preview_width = 0.55 },
+			prompt_position = "top",
+		},
 		path_display = function(_, path)
 			local tail = vim.fn.fnamemodify(path, ":t")
 			local dir = vim.fn.fnamemodify(path, ":h")
@@ -80,7 +85,7 @@ vim.keymap.set("n", "<leader>fl", function()
 end, { desc = "Workspace Symbols" })
 
 vim.keymap.set("n", "<leader>fm", function()
-	require("telescope.builtin").marks({ prompt_title = "Project Marks", mark_type = "global" })
+	require("telescope.builtin").oldfiles({ cwd_only = true })
 end, { desc = "Project marks" })
 
 vim.keymap.set("n", "<leader>fw", function()
@@ -121,11 +126,6 @@ vim.keymap.set("n", "<leader>fw", function()
 		})
 		:find()
 end, { desc = "Worktrees" })
-
--- Tmux Navigator (kept for its :TmuxNavigate* commands; its own maps are
--- disabled so the herdr-aware maps below are the single source of truth).
-vim.g.tmux_navigator_no_mappings = 1
-vim.pack.add({ { src = "https://github.com/christoomey/vim-tmux-navigator" } })
 
 -- Seamless <C-h/j/k/l> across Neovim splits and herdr panes. Moves between
 -- Neovim splits first; at a split edge, hands off to herdr (inside a herdr

@@ -8,7 +8,6 @@
 -- Languages (disabling a language turns off its LSP server and related plugins)
 -- Config.languages.python = false
 -- Config.languages.lua = false
--- Config.languages.java = false
 -- Config.languages.go = false
 -- Config.languages.terraform = false
 -- Config.languages.rust = false

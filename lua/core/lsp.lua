@@ -1,7 +1,6 @@
 local lsp_map = {
 	python = { "pyright", "ruff" },
 	lua = { "lua_ls" },
-	java = { "jdtls" },
 	go = { "gopls" },
 	terraform = { "terraformls" },
 	rust = { "rust-analyzer" },

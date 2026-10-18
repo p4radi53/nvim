@@ -30,17 +30,9 @@
       "rev": "4d55ed3482da32d1a68a9ed36dca5f4d69ec0ffb",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
     },
-    "neovim": {
-      "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
-      "src": "https://github.com/rose-pine/neovim"
-    },
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "https://github.com/MunifTanjim/nui.nvim"
-    },
-    "nvim": {
-      "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
-      "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-java": {
       "rev": "db5536b4cb3da153084e50016596fd0e3a319aae",
@@ -49,10 +41,6 @@
     "nvim-metals": {
       "rev": "a4b20656bf1014404dd63bf9fd5f22fcc50fee52",
       "src": "https://github.com/scalameta/nvim-metals"
-    },
-    "nvim-nio": {
-      "rev": "edcc181a875301dd21840189aa2f2f9ad69fc172",
-      "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
       "rev": "d3e4a28b63961ba972b0945d66c73b6eec969953",

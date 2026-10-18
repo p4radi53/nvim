@@ -43,7 +43,6 @@ LSP servers are configured in the `lsp/` directory (one file per server) and ena
 | _always_ | `stylua` (Lua formatter) |
 | `python` | `pyright`, `ruff` |
 | `lua` | `lua-language-server` |
-| `java` | `jdtls` |
 | `go` | `gopls` |
 | `terraform` | `terraform-ls` |
 | `rust` | `rust-analyzer` |
@@ -71,7 +70,6 @@ The configuration exposes a global `Config` table with feature flags. Override a
 
 ```lua
 -- Turn off languages you don't need
-Config.languages.java = false
 Config.languages.terraform = false
 
 -- Switch the colorscheme
@@ -87,7 +85,6 @@ Disabling a language turns off its LSP server(s) and any related plugins.
 | `Config.theme` | `"tokyonight-night"` | Colorscheme |
 | `Config.languages.python` | `true` | pyright, ruff, venv-selector |
 | `Config.languages.lua` | `true` | lua_ls, lazydev |
-| `Config.languages.java` | `true` | jdtls, nvim-java |
 | `Config.languages.go` | `true` | gopls |
 | `Config.languages.terraform` | `true` | terraformls |
 | `Config.languages.rust` | `true` | rust-analyzer |

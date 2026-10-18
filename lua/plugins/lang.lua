@@ -9,11 +9,6 @@ if Config.languages.lua then
 	})
 end
 
--- Java
-if Config.languages.java then
-	vim.pack.add({ { src = "https://github.com/nvim-java/nvim-java" } })
-end
-
 -- Scala
 if Config.languages.scala then
 	vim.pack.add({ { src = "https://github.com/scalameta/nvim-metals" } })

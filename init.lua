@@ -7,7 +7,6 @@ _G.Config = {
 	languages = {
 		python = true,
 		lua = true,
-		java = true,
 		go = true,
 		terraform = true,
 		rust = true,
